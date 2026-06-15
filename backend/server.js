@@ -687,9 +687,25 @@ app.post('/api/aibot/chat', (req, res) => {
         reply: `Contractor directory for **${country}**:\n\n${contractorList || 'No contractors loaded.'}\n\nGovernment officials can audit each contractor's past work, reviews, and pending approvals directly on our dedicated "Contractors" tab.`
       });
     });
-  } else if (queryMsg.includes('hello') || queryMsg.includes('hi ') || queryMsg.includes('hey')) {
+  } else if (queryMsg.includes('budget') || queryMsg.includes('spending') || queryMsg.includes('cost') || queryMsg.includes('money')) {
+    db.get('SELECT budget_count, health_score FROM countries WHERE name = ?', [country], (err, row) => {
+      const budget = row ? row.budget_count : 'N/A';
+      const health = row ? row.health_score : 'N/A';
+      res.json({
+        reply: `Infrastructure financial report for **${country}**:\n\n*   **Total Budget Allocated:** ${budget}\n*   **Road Quality Health Index:** ${health}\n\nAll funds are tracked transparently against active municipal contracts.`
+      });
+    });
+  } else if (queryMsg.includes('help') || queryMsg.includes('what can you do') || queryMsg.includes('how to use')) {
     res.json({
-      reply: `Hello! I am the **ROADWATCH AI Assistant**. \n\nI can help you audit infrastructure health, track ongoing and upcoming construction projects, view recent citizen complaints, or check contractor reports for **${country}**. \n\nWhat can I assist you with today?`
+      reply: `Here are the queries you can ask me about **${country}**:\n\n1.  💬 *"Show projects"* — Lists ongoing construction works.\n2.  💬 *"Show complaints"* — Lists active road safety hazards.\n3.  💬 *"Show contractors"* — Audits active building firms.\n4.  💬 *"Show budget"* — Displays infrastructure funding stats.\n5.  💬 *"How do I report?"* — Explains how to file a hazard complaint.`
+    });
+  } else if (queryMsg.includes('report') || queryMsg.includes('file') || queryMsg.includes('escalate')) {
+    res.json({
+      reply: `To report a road safety hazard in **${country}**:\n\n1. Go to the **Complaints** section in the left sidebar.\n2. Upload a photo of the hazard (potholes, structural damage, blockages).\n3. Our client-side **AI Object Detection** will instantly classify the photo and auto-fill the form.\n4. Click **Submit**. Your complaint will be logged and routed to the executive engineer.`
+    });
+  } else if (queryMsg.includes('hello') || queryMsg.includes('hi') || queryMsg.includes('hey')) {
+    res.json({
+      reply: `Hello! I am the **ROADWATCH Interactive Chatbot**. \n\nI can help you retrieve infrastructure budgets, active projects, citizen complaints, or contractor reports for **${country}**.\n\nType **"help"** to see a list of things you can ask me!`
     });
   } else {
     // General response
@@ -697,7 +713,7 @@ app.post('/api/aibot/chat', (req, res) => {
       const health = row ? row.health_score : '75/100';
       const budget = row ? row.budget_count : '$1B';
       res.json({
-        reply: `I see you are interested in the infrastructure of **${country}**. \n\nCurrently, ${country} has an overall **Road Health Score of ${health}** with a total infrastructure budget of **${budget}**.\n\nYou can query me about "complaints", "projects", or "contractors" to get live updates from our persistent database!`
+        reply: `I see you are interested in the infrastructure of **${country}**. \n\nCurrently, ${country} has an overall **Road Health Score of ${health}** with a total infrastructure budget of **${budget}**.\n\nYou can query me about "complaints", "projects", or "contractors" to get live updates from our database!`
       });
     });
   }
