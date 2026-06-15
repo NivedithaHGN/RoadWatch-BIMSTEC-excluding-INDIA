@@ -155,7 +155,18 @@
           required
         >
 
-        <input type="file" id="photo" name="photo" accept="image/*">
+        <div style="display: flex; flex-direction: column; gap: 6px;">
+          <label style="font-size: 0.8rem; color: var(--text-muted);">Attach Photo Evidence</label>
+          <input type="file" id="photo" name="photo" accept="image/*">
+          
+          <!-- ROADWATCH AI Illiterate Accessibility Scan Controls -->
+          <div id="aiLoader" style="display:none; color: var(--color-primary); font-size: 0.8rem; font-weight: 700; margin-top: 10px; text-shadow: 0 0 10px var(--border-glow);">
+            🔍 ROADWATCH AI scanning photo for safety issues...
+          </div>
+          <img id="aiPreview" style="display:none; max-width: 100%; border-radius: 8px; margin-top: 10px; border: 1.5px solid var(--color-primary);" alt="AI evidence preview" />
+          <div id="aiStatus" style="display:none; background: rgba(56, 211, 159, 0.05); padding: 12px; border-radius: var(--radius-md); border: 1.5px dashed var(--color-primary); font-size: 0.82rem; margin-top: 10px; line-height: 1.4;">
+          </div>
+        </div>
 
         <button type="submit">
           Submit Citizen Complaint
@@ -199,6 +210,9 @@
 
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
 <script src="/socket.io/socket.io.js"></script>
+<!-- Load TensorFlow.js and COCO-SSD for client-side AI image detection -->
+<script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs"></script>
+<script src="https://cdn.jsdelivr.net/npm/@tensorflow-models/coco-ssd"></script>
 <script src="app.js"></script>
 <script>
   // Hide 'Upload Complaint' panel for govt officials on dashboard
