@@ -1299,7 +1299,7 @@ function setupFormHandlers() {
   // A. Complaint Registration Form Submission
   const compForm = document.getElementById('complaintForm');
   if (compForm) {
-    // Attach change listener to photo upload for AI scanning (Accessibility for illiterate users)
+    // Attach change listener to photo upload for AI scanning (Accessibility for barrier-free reporting)
     const fileInputEl = document.getElementById('photo');
     if (fileInputEl) {
       fileInputEl.addEventListener('change', function(e) {
@@ -1354,10 +1354,10 @@ function setupFormHandlers() {
 
                       if (blockageDetected) {
                         categoryTitle = `Road Blockage: ${mainObj.toUpperCase()} Detected`;
-                        descriptionText = `AI Auto-Detection: Identified a ${mainObj} (${confidence}% confidence) blocking the roadway. Registered automatically for illiterate accessibility support.`;
+                        descriptionText = `AI Auto-Detection: Identified a ${mainObj} (${confidence}% confidence) blocking the roadway. Registered automatically for inclusive accessibility support.`;
                       } else {
                         categoryTitle = `Infrastructure Issue: ${mainObj.toUpperCase()}`;
-                        descriptionText = `AI Auto-Detection: Identified ${mainObj} (${confidence}% confidence) near the roadway. Registered automatically for illiterate accessibility support.`;
+                        descriptionText = `AI Auto-Detection: Identified ${mainObj} (${confidence}% confidence) near the roadway. Registered automatically for inclusive accessibility support.`;
                       }
 
                       document.getElementById('title').value = categoryTitle;
@@ -1374,7 +1374,7 @@ function setupFormHandlers() {
                     } else {
                       // Fallback
                       const categoryTitle = 'Road Distress & Obstruction';
-                      const descriptionText = 'AI Auto-Detection: Identified general pavement distress or surface obstruction. Registered automatically for illiterate accessibility support.';
+                      const descriptionText = 'AI Auto-Detection: Identified general pavement distress or surface obstruction. Registered automatically for inclusive accessibility support.';
 
                       document.getElementById('title').value = categoryTitle;
                       document.getElementById('description').value = descriptionText;
@@ -1384,7 +1384,7 @@ function setupFormHandlers() {
 
                       aiStatus.innerHTML = `
                         <span style="color: var(--color-primary); font-weight:700;">🟢 AI Scan Complete</span><br>
-                        <b>Report Type:</b> General Road Obstruction (Auto-Filled for illiterate accessibility support)
+                        <b>Report Type:</b> General Road Obstruction (Auto-Filled for inclusive accessibility support)
                       `;
                     }
                   });
@@ -1397,7 +1397,7 @@ function setupFormHandlers() {
                 setTimeout(() => {
                   aiLoader.style.display = 'none';
                   const categoryTitle = 'Road Blockage (Reported via Image)';
-                  const descriptionText = 'AI Auto-Detection: Identified potential road blockage / hazard from uploaded image. Registered automatically for illiterate accessibility support.';
+                  const descriptionText = 'AI Auto-Detection: Identified potential road blockage / hazard from uploaded image. Registered automatically for inclusive accessibility support.';
 
                   document.getElementById('title').value = categoryTitle;
                   document.getElementById('description').value = descriptionText;
@@ -1408,7 +1408,7 @@ function setupFormHandlers() {
                   aiStatus.style.display = 'block';
                   aiStatus.innerHTML = `
                     <span style="color: var(--color-primary); font-weight:700;">🟢 AI Scan Complete (Simulation)</span><br>
-                    <b>Report Type:</b> Road Blockage (Auto-Filled for illiterate accessibility support)
+                    <b>Report Type:</b> Road Blockage (Auto-Filled for inclusive accessibility support)
                   `;
                 }, 1200);
               }
