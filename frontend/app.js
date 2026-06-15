@@ -211,30 +211,32 @@ function loadCountriesOffline(callback) {
     .rw-toast {
       display: flex; align-items: flex-start; gap: 12px;
       padding: 14px 18px; border-radius: 14px; min-width: 300px; max-width: 380px;
-      box-shadow: 0 8px 32px rgba(0,0,0,0.4);
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      box-shadow: 0 8px 32px rgba(0,0,0,0.2);
       backdrop-filter: blur(12px);
       animation: rw-slide-in 0.3s cubic-bezier(.16,1,.3,1) forwards;
       pointer-events: all; cursor: pointer;
     }
     .rw-toast.removing { animation: rw-slide-out 0.25s ease forwards; }
-    .rw-toast-warning  { background: rgba(245,158,11,0.15); border: 1px solid rgba(245,158,11,0.4); }
-    .rw-toast-success  { background: rgba(16,185,129,0.15); border: 1px solid rgba(56,211,159,0.4); }
-    .rw-toast-info     { background: rgba(99,102,241,0.15); border: 1px solid rgba(99,102,241,0.4); }
+    .rw-toast-warning  { border: 1px solid rgba(245,158,11,0.3); border-left: 4px solid var(--color-warning); }
+    .rw-toast-success  { border: 1px solid rgba(16,185,129,0.3); border-left: 4px solid var(--color-success); }
+    .rw-toast-info     { border: 1px solid rgba(59,130,246,0.3); border-left: 4px solid var(--color-secondary); }
     .rw-toast-icon { font-size: 1.4rem; flex-shrink: 0; margin-top: 1px; }
     .rw-toast-body { flex: 1; min-width: 0; }
     .rw-toast-title {
-      font-size: 0.85rem; font-weight: 700; color: #f1f5f9;
+      font-size: 0.85rem; font-weight: 700; color: var(--text-main);
       white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
     }
     .rw-toast-sub {
-      font-size: 0.76rem; color: #94a3b8; margin-top: 3px;
+      font-size: 0.76rem; color: var(--text-muted); margin-top: 3px;
       line-height: 1.4; word-break: break-word;
     }
     .rw-toast-close {
-      font-size: 0.9rem; color: #64748b; cursor: pointer;
+      font-size: 0.9rem; color: var(--text-muted); cursor: pointer;
       flex-shrink: 0; padding: 0 4px; line-height: 1;
     }
-    .rw-toast-close:hover { color: #f1f5f9; }
+    .rw-toast-close:hover { color: var(--text-main); }
     @keyframes rw-slide-in {
       from { opacity: 0; transform: translateX(40px); }
       to   { opacity: 1; transform: translateX(0); }
